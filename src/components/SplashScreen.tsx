@@ -4,19 +4,13 @@ import type { SplashScreenPhase } from '@/hooks/useSplashScreen';
 
 import '@/styles/SplashScreen.css';
 
-declare global {
-    interface Window {
-        __initialLoaderTimer?: number;
-    }
-}
-
 type SplashScreenProps = {
     phase: SplashScreenPhase;
 };
 
 function SplashScreen({ phase }: SplashScreenProps) {
     useEffect(() => {
-        window.clearTimeout(window.__initialLoaderTimer);
+        window.clearTimeout(window.__initialLoaderTimer?.[0]);
 
         const initialLoader = document.getElementById('initial-loader');
 

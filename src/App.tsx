@@ -14,7 +14,9 @@ function App() {
             <SideMenu />
 
             <div className="home">
-                <section className="home-hero">home-hero</section>
+                <section className="home-hero">
+                    home-hero <br /> {document.readyState}
+                </section>
                 <section className="home-main">home-main</section>
                 <section className="home-extra">home-extra</section>
             </div>

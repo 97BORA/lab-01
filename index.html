@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>fragment</title>
+
         <style>
             .initial-loader {
                 position: fixed;
@@ -81,12 +82,23 @@
         </div>
         <div id="root"></div>
         <script>
-            window.__initialLoaderTimer = window.setTimeout(() => {
-                document
-                    .getElementById('initial-loader')
-                    ?.classList.add('initial-loader--visible');
-            }, 150);
+            window.__initialLoaderTimer = [
+                window.setTimeout(() => {
+                    document
+                        .getElementById('initial-loader')
+                        ?.classList.add('initial-loader--visible');
+                }, 150),
+            ];
         </script>
+
+        <script>
+            console.log('C before load:', document.readyState);
+
+            window.addEventListener('load', () => {
+                console.log('D window load:', document.readyState);
+            });
+        </script>
+
         <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>
