@@ -11,19 +11,7 @@ function Counter() {
         });
     };
 
-    const handleResetClick = () => {
-        setCount(0);
-    };
-
-    return (
-        <div>
-            <button type="button" onClick={handleResetClick}>
-                Reset
-            </button>
-
-            <div onClick={handleClick}>{count}</div>
-        </div>
-    );
+    return <div onClick={handleClick}>{count}</div>;
 }
 
 export default Counter;

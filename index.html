@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>fragment</title>
+        <title>lab-01</title>
 
         <style>
             .initial-loader {
@@ -71,7 +71,9 @@
                 }
             }
         </style>
+        <!--  -->
     </head>
+    <!--  -->
     <body>
         <div id="initial-loader" class="initial-loader">
             <div class="splash-dots">
@@ -81,8 +83,9 @@
             </div>
         </div>
         <div id="root"></div>
+        <!--  -->
         <script>
-            window.__initialLoaderTimer = [
+            window.__initialLoaderTimers = [
                 window.setTimeout(() => {
                     document
                         .getElementById('initial-loader')
@@ -90,7 +93,7 @@
                 }, 150),
             ];
         </script>
-
+        <!--  -->
         <script>
             console.log('C before load:', document.readyState);
 

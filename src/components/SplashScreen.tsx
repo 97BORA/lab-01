@@ -10,7 +10,7 @@ type SplashScreenProps = {
 
 function SplashScreen({ phase }: SplashScreenProps) {
     useEffect(() => {
-        window.clearTimeout(window.__initialLoaderTimer?.[0]);
+        window.clearTimeout(window.__initialLoaderTimers?.[0]);
 
         const initialLoader = document.getElementById('initial-loader');
 

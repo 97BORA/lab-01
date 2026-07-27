@@ -1,76 +1,17 @@
-import { useEffect, useState } from 'react';
+﻿import type { SplashScreenPhase } from '@/features/splash/useSplashScreen';
+// SplashScreenPhase 타입만 가져온다. / 실제 값을 가져오는 것이 아니다.
 
-export type SplashScreenPhase = 'loading' | 'intro' | 'fadeOut';
+type SplashScreenProps = {
+    phase: SplashScreenPhase;
+};
 
-const LOADING_TEST = true;
+// SplashScreen 컴포넌트가 받을 props의 타입을 정한다.
+// phase라는 props가 있어야 하고, 그 값은 'loading', 'intro', 'fadeOut' 중 하나여야 한다.
 
-const LOADING_TEST_TIME = 3000;
-
-const INTRO_TIME = 3000;
-const FADEOUT_TIME = 1500;
-
-function useSplashScreen() {
-    const [showSplashScreen, setShowSplashScreen] = useState(true);
-
-    const [splashScreenPhase, setSplashScreenPhase] =
-        useState<SplashScreenPhase>(() => {
-            if (LOADING_TEST) return 'loading';
-
-            return document.readyState === 'complete' ? 'intro' : 'loading';
-        });
-
-    useEffect(() => {
-        if (splashScreenPhase !== 'loading') return;
-
-        if (LOADING_TEST) {
-            const loadingTimerId = window.setTimeout(() => {
-                setSplashScreenPhase('intro');
-            }, LOADING_TEST_TIME);
-
-            return () => {
-                window.clearTimeout(loadingTimerId);
-            };
-        }
-
-        const handleLoad = () => {
-            setSplashScreenPhase('intro');
-        };
-
-        window.addEventListener('load', handleLoad);
-
-        return () => {
-            window.removeEventListener('load', handleLoad);
-        };
-    }, [splashScreenPhase]);
-
-    useEffect(() => {
-        if (splashScreenPhase !== 'intro') return;
-
-        const introTimerId = window.setTimeout(() => {
-            setSplashScreenPhase('fadeOut');
-        }, INTRO_TIME);
-
-        return () => {
-            window.clearTimeout(introTimerId);
-        };
-    }, [splashScreenPhase]);
-
-    useEffect(() => {
-        if (splashScreenPhase !== 'fadeOut') return;
-
-        const removeTimerId = window.setTimeout(() => {
-            setShowSplashScreen(false);
-        }, FADEOUT_TIME);
-
-        return () => {
-            window.clearTimeout(removeTimerId);
-        };
-    }, [splashScreenPhase]);
-
-    return {
-        showSplashScreen,
-        splashScreenPhase,
-    };
+function SplashScreen({ phase }: SplashScreenProps) {
+    // SplashScreen 함수는 phase라는 값을 받을 준비를 한다.
+    // 실제 phase 값은 누군가 SplashScreen을 사용할 때 들어온다.
+    return <div>{phase}</div>;
 }
 
-export default useSplashScreen;
+export default SplashScreen;
