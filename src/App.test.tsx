@@ -5,7 +5,7 @@ import App from './App';
 test('renders app root', () => {
     render(<App />);
 
-    expect(screen.getByText(/1 section/i)).toBeInTheDocument();
-    expect(screen.getByText(/2 section/i)).toBeInTheDocument();
-    expect(screen.getByText(/3 section/i)).toBeInTheDocument();
+    expect(
+        screen.getByRole('heading', { name: /get started/i }),
+    ).toBeInTheDocument();
 });
