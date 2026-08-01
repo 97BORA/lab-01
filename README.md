@@ -2,8 +2,6 @@
 
 ---
 
-<br />
-
 ![Day](https://img.shields.io/badge/Day-260801-233D4D?labelColor=464858)
 
 ```
